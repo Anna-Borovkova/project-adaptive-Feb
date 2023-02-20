@@ -10,4 +10,4 @@ Alt-H1
 * Адаптивная верстка
 * DOM, работа с атрибутами, реакция на действия пользователя
 
-Ссылка на этот проект https://anna-borovkova.github.io/project-adaptive-Jan/index.html
+Ссылка на этот проект https://anna-borovkova.github.io/project-adaptive-Feb/
