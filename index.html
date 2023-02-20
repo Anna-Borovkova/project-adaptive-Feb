@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>MESTO</title>
+    <script src="./index.js" defer></script>
+  </head>
+
+  <body class="body">
+    <div class="page">
+      <header class="header page__header">
+        <img
+          class="header__logo"
+          src="./images/header-logo.svg"
+          alt="Логотип Место Россия."
+        />
+        <div class="header__line"></div>
+      </header>
+
+      <main class="content">
+        <section class="profile">
+          <div class="profile__blocks">
+            <img
+              class="profile__avatar"
+              src="./images/avatar.jpg"
+              alt="Фото Жак-Ив Кусто."
+            />
+            <div class="profile__info">
+              <div class="profile__one-line">
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button class="profile__edit-button"></button>
+              </div>
+              <h2 class="profile__profession">Исследователь океана</h2>
+            </div>
+          </div>
+          <button class="profile__add-button"></button>
+        </section>
+
+        <section class="places">
+          <ul class="places__list">
+            <li class="place">
+              <img
+                class="place__img"
+                src="./images/karachaevsk.jpg"
+                alt="Карачаевск."
+              />
+              <div class="place__one-line">
+                <h2 class="place__title">Карачаевск - самый лучший город</h2>
+                <button
+                  class="place__like-button place__like-button_active"
+                ></button>
+              </div>
+            </li>
+
+            <li class="place">
+              <img
+                class="place__img"
+                src="./images/karachaevsk.jpg"
+                alt="Карачаевск."
+              />
+              <div class="place__one-line">
+                <h2 class="place__title">Карачаевск</h2>
+                <button class="place__like-button"></button>
+              </div>
+            </li>
+
+            <li class="place">
+              <img
+                class="place__img"
+                src="./images/karachaevsk.jpg"
+                alt="Карачаевск."
+              />
+              <div class="place__one-line">
+                <h2 class="place__title">Карачаевск</h2>
+                <button class="place__like-button"></button>
+              </div>
+            </li>
+
+            <li class="place">
+              <img
+                class="place__img"
+                src="./images/karachaevsk.jpg"
+                alt="Карачаевск."
+              />
+              <div class="place__one-line">
+                <h2 class="place__title">Карачаевск</h2>
+                <button class="place__like-button"></button>
+              </div>
+            </li>
+
+            <li class="place">
+              <img
+                class="place__img"
+                src="./images/karachaevsk.jpg"
+                alt="Карачаевск."
+              />
+              <div class="place__one-line">
+                <h2 class="place__title">Карачаевск</h2>
+                <button class="place__like-button"></button>
+              </div>
+            </li>
+
+            <li class="place">
+              <img
+                class="place__img"
+                src="./images/karachaevsk.jpg"
+                alt="Карачаевск."
+              />
+              <div class="place__one-line">
+                <h2 class="place__title">Карачаевск</h2>
+                <button class="place__like-button"></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <form class="popup">
+          <div class="popup__container">
+            <span class="popup__close-button"></span>
+            <h3 class="popup__title">Редактировать профиль</h3>
+            <input
+              type="text"
+              placeholder="Имя"
+              class="input__text input__text_type_name"
+            />
+            <input
+              type="text"
+              placeholder="О себе"
+              class="input__text input__text_type_about"
+            />
+            <button type="submit" class="popup__save-button">Сохранить</button>
+          </div>
+        </form>
+      </main>
+      <footer class="footer page__footer">
+        <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+      </footer>
+    </div>
+  </body>
+</html>
