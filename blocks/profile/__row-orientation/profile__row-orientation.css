@@ -1,0 +1,12 @@
+.profile__row-orientation {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+@media screen and (max-width: 700px) {
+  .profile_row-orientation {
+    gap: 15px;
+    margin-left: 30px;
+  }
+}

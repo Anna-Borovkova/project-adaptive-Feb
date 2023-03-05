@@ -1,7 +1,6 @@
 .profile {
   display: flex;
   margin-bottom: 50px;
-  max-width: calc(100%-38px);
   justify-content: space-between;
 }
 
