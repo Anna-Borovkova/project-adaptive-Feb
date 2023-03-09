@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./pages/index.css" />
     <title>MESTO</title>
     <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/constants.js"></script>
   </head>
 
   <body class="body">
@@ -44,7 +45,6 @@
             aria-label="Добавить фото."
           ></button>
         </section>
-
         <section class="places">
           <ul class="places__list">
             <template id="placeTemplate">
@@ -63,22 +63,11 @@
                     aria-label="Фото нравится."
                   ></button>
                 </div>
-                <div class="place__open-card">
-                  <div class="place__center">
-                    <img class="place__open-card-img" />
-                    <button
-                      class="popup__close-button"
-                      type="reset"
-                      aria-label="Закрыть окно просмотра фотографии."
-                    ></button>
-                    <h3 class="place__open-card-title"></h3>
-                  </div>
-                </div>
               </li>
             </template>
           </ul>
         </section>
-        <div class="popup profile-edit-popup">
+        <div class="popup profile-edit-popup popup_opacity_light">
           <div class="popup__container">
             <button
               class="popup__close-button"
@@ -105,7 +94,7 @@
             </form>
           </div>
         </div>
-        <div class="popup place-add-popup">
+        <div class="popup place-add-popup popup_opacity_light">
           <div class="popup__container">
             <button
               class="popup__close-button"
@@ -132,6 +121,19 @@
             </form>
           </div>
         </div>
+        <div class="popup place__open-card-popup popup_opacity_dark">
+          <div class="place__center">
+            <img
+              class="place__open-card-img"
+            />
+            <button
+              class="popup__close-button"
+              type="reset"
+              aria-label="Закрыть окно добавления фото."
+            ></button>
+            <h3 class="place__open-card-title"></h3>
+          </div>
+        </div>
       </main>
       <footer class="footer page__footer">
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
@@ -139,3 +141,4 @@
     </div>
   </body>
 </html>
+</div> 
