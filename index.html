@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./pages/index.css" />
     <title>MESTO</title>
-    <script src="./scripts/index.js" defer></script>
-    <script src="./scripts/constants.js"></script>
   </head>
-
   <body class="body">
     <div class="page">
       <header class="header page__header">
@@ -18,7 +15,6 @@
           alt="Логотип Место Россия."
         />
       </header>
-
       <main class="content">
         <section class="profile">
           <div class="profile__blocks">
@@ -112,7 +108,7 @@
               aria-label="Закрыть окно добавления фото."
             ></button>
             <h3 class="popup__title">Новое место</h3>
-            <form name="profile-edit-form" class="popup__form">
+            <form name="place-add-form" class="popup__form">
               <input
                 required
                 type="text"
@@ -155,5 +151,8 @@
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
       </footer>
     </div>
+    <script src="./scripts/validate.js"></script>
+    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/constants.js"></script>
   </body>
 </html>
