@@ -1,3 +1,5 @@
+import Card from "./card.js";
+
 const placeList = document.querySelector(".places__list");
 
 const profileEditPopup = document.querySelector(".profile-edit-popup");
@@ -25,63 +27,19 @@ const placeLinkInput = placeAddForm.querySelector(
   ".popup__input-text_type_about"
 );
 
-const popupZoomImage = document.querySelector(".open-card-popup");
-const placeOpenCardTitle = popupZoomImage.querySelector(
-  ".popup__open-card-title"
-);
-const placeOpenCardImage = popupZoomImage.querySelector(
-  ".popup__open-card-img"
-);
+initialPlaces.forEach((item) => {
+  const card = new Card(item, "#placeTemplate");
+  const cardElement = card.genetateCard();
+  placeList.prepend(cardElement);
+});
 
-const placeTemplateContent = document.querySelector("#placeTemplate").content;
-
-const closedButtonList = Array.from(
-  document.querySelectorAll(".popup__close-button")
-);
-
-function createPlace(placeData) {
-  const newPlace = placeTemplateContent.cloneNode(true);
-
-  const placeImage = newPlace.querySelector(".place__img");
-  placeImage.setAttribute("src", placeData.link);
-  placeImage.setAttribute("alt", placeData.name);
-
-  const placeTitle = newPlace.querySelector(".place__title");
-  placeTitle.textContent = placeData.name;
-
-  const likeButton = newPlace.querySelector(".place__like-button");
-  likeButton.addEventListener("click", toggleLike);
-
-  const trashButton = newPlace.querySelector(".place__delete-button");
-  trashButton.addEventListener("click", deletePlace);
-
-  placeImage.addEventListener("click", () => handleCardClick(placeData));
-
-  return newPlace;
-}
-
-function handleCardClick(placeData) {
-  openPopup(popupZoomImage);
-  placeOpenCardTitle.textContent = placeData.name;
-  placeOpenCardImage.setAttribute("src", placeData.link);
-  placeOpenCardImage.setAttribute("alt", placeData.name);
-}
-
-function addPlace(addedPlace) {
-  placeList.prepend(addedPlace);
-}
-
-function prependPlace(placeData) {
-  addPlace(createPlace(placeData));
-}
-
-function openPopup(popupName) {
+export function openPopup(popupName) {
   popupName.classList.add("popup_opened");
   document.addEventListener("keydown", closeByEscape);
 }
 
-function closePopup(closedButtonElement) {
-  const closedPopupElement = closedButtonElement.closest(".popup");
+function closePopup(popup) {
+  const closedPopupElement = popup.closest(".popup");
   closedPopupElement.classList.remove("popup_opened");
   document.removeEventListener("keydown", closeByEscape);
 }
@@ -100,27 +58,12 @@ function submitPlaceAddForm(event) {
   const name = placeNameInput.value;
   const link = placeLinkInput.value;
   const newAddedPlace = { name, link };
-  prependPlace(newAddedPlace);
+  const card = new Card(newAddedPlace, "#placeTemplate");
+  const cardElement = card.genetateCard();
+  placeList.prepend(cardElement);
   placeAddForm.reset();
   closePopup(placeAddPopup);
-
-  const buttonElement = placeAddPopup.querySelector(".popup__save-button");
-  buttonElement.classList.add("popup__save-button_disabled");
-  buttonElement.setAttribute("disabled", "");
 }
-
-function toggleLike(event) {
-  const likeButton = event.target;
-  likeButton.classList.toggle("place__like-button_active");
-}
-
-function deletePlace(event) {
-  const trashButton = event.target;
-  const deletedCard = trashButton.closest(".place");
-  deletedCard.remove();
-}
-
-initialPlaces.forEach(prependPlace);
 
 profileEditOpenButton.addEventListener("click", function () {
   const profileNameElement = profileName.textContent;
