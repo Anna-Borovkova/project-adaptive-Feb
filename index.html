@@ -71,7 +71,10 @@
               aria-label="Закрыть окно редактирования профиля."
             ></button>
             <h3 class="popup__title">Редактировать профиль</h3>
-            <form name="profile-edit-form" class="popup__form">
+            <form
+              name="profile-edit-form"
+              class="popup__form popup__form_type_profile"
+            >
               <input
                 required
                 type="text"
@@ -108,7 +111,10 @@
               aria-label="Закрыть окно добавления фото."
             ></button>
             <h3 class="popup__title">Новое место</h3>
-            <form name="place-add-form" class="popup__form">
+            <form
+              name="place-add-form"
+              class="popup__form popup__form_type_place"
+            >
               <input
                 required
                 type="text"
@@ -151,9 +157,6 @@
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
       </footer>
     </div>
-    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js" type="module" defer></script>
-    <script src="./scripts/constants.js"></script>
-    <script src="./scripts/card.js" type="module"></script>
   </body>
 </html>

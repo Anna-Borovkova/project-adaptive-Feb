@@ -1,6 +1,4 @@
-import {
-  openPopup,
-} from "./index.js";
+import { openPopup } from "./index.js";
 
 export default class Card {
   constructor(placeData, templateSelector) {
@@ -15,6 +13,8 @@ export default class Card {
     this._placeOpenCardImage = this._popupZoomImage.querySelector(
       ".popup__open-card-img"
     );
+    this._placeLikeButton = this._element.querySelector(".place__like-button");
+    this._placeImg = this._element.querySelector(".place__img");
   }
 
   _getTemplate() {
@@ -26,11 +26,9 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._element
-      .querySelector(".place__like-button")
-      .addEventListener("click", () => {
-        this._handleLikeClick();
-      });
+    this._placeLikeButton.addEventListener("click", () => {
+      this._handleLikeClick();
+    });
 
     this._element
       .querySelector(".place__delete-button")
@@ -38,19 +36,18 @@ export default class Card {
         this._handleTrashClick();
       });
 
-    this._element.querySelector(".place__img").addEventListener("click", () => {
+    this._placeImg.addEventListener("click", () => {
       this._handleCardClick();
     });
   }
 
   _handleLikeClick() {
-    this._element
-      .querySelector(".place__like-button")
-      .classList.toggle("place__like-button_active");
+    this._placeLikeButton.classList.toggle("place__like-button_active");
   }
 
   _handleTrashClick() {
     this._element.remove();
+    this._element = null;
   }
 
   _handleCardClick() {
@@ -62,8 +59,8 @@ export default class Card {
 
   genetateCard() {
     this._setEventListeners();
-    this._element.querySelector(".place__img").src = this._link;
-    this._element.querySelector(".place__img").alt = this._name;
+    this._placeImg.src = this._link;
+    this._placeImg.alt = this._name;
     this._element.querySelector(".place__title").textContent = this._name;
     return this._element;
   }

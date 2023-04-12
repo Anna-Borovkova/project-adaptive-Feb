@@ -1,4 +1,6 @@
-import Card from "./card.js";
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+import { initialPlaces } from "./constants.js";
 
 const placeList = document.querySelector(".places__list");
 
@@ -27,10 +29,15 @@ const placeLinkInput = placeAddForm.querySelector(
   ".popup__input-text_type_about"
 );
 
-initialPlaces.forEach((item) => {
-  const card = new Card(item, "#placeTemplate");
+function createCard(placeData, placeTemplate) {
+  const card = new Card(placeData, placeTemplate);
   const cardElement = card.genetateCard();
-  placeList.prepend(cardElement);
+  return cardElement;
+}
+
+initialPlaces.forEach((item) => {
+  createCard(item, "#placeTemplate");
+  placeList.prepend(createCard(item, "#placeTemplate"));
 });
 
 export function openPopup(popupName) {
@@ -39,8 +46,7 @@ export function openPopup(popupName) {
 }
 
 function closePopup(popup) {
-  const closedPopupElement = popup.closest(".popup");
-  closedPopupElement.classList.remove("popup_opened");
+  popup.classList.remove("popup_opened");
   document.removeEventListener("keydown", closeByEscape);
 }
 
@@ -100,3 +106,23 @@ placeAddOpenButton.addEventListener("click", function () {
 });
 
 placeAddPopup.addEventListener("submit", submitPlaceAddForm);
+
+const config = {
+  inputSelector: ".popup__input-text",
+  errorClassTemplate: "popup__input-text_error",
+  activeErrorClass: "popup__input-error_active",
+  submitButtonSelector: ".popup__save-button",
+  submitButtonClass: "popup__save-button_disabled",
+};
+
+const profileFormValidator = new FormValidator(
+  config,
+  ".popup__form_type_profile"
+);
+const placeAddFormValidator = new FormValidator(
+  config,
+  ".popup__form_type_place"
+);
+
+profileFormValidator.enableValidation();
+placeAddFormValidator.enableValidation();
