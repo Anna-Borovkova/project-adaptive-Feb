@@ -29,6 +29,24 @@ const placeLinkInput = placeAddForm.querySelector(
   ".popup__input-text_type_about"
 );
 
+const config = {
+  inputSelector: ".popup__input-text",
+  errorClassTemplate: "popup__input-text_error",
+  activeErrorClass: "popup__input-error_active",
+  submitButtonSelector: ".popup__save-button",
+  submitButtonClass: "popup__save-button_disabled",
+};
+
+const popupFormTypeProfile = document.querySelector(
+  ".popup__form_type_profile"
+);
+const popupFormTypePlace = document.querySelector(".popup__form_type_place");
+
+const profileFormValidator = new FormValidator(config, popupFormTypeProfile);
+const placeAddFormValidator = new FormValidator(config, popupFormTypePlace);
+
+const popupList = document.querySelectorAll(".popup");
+
 function createCard(placeData, placeTemplate) {
   const card = new Card(placeData, placeTemplate);
   const cardElement = card.genetateCard();
@@ -86,8 +104,6 @@ function closeByEscape(evt) {
   }
 }
 
-const popupList = document.querySelectorAll(".popup");
-
 popupList.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
     if (evt.target.classList.contains("popup_opened")) {
@@ -106,23 +122,6 @@ placeAddOpenButton.addEventListener("click", function () {
 });
 
 placeAddPopup.addEventListener("submit", submitPlaceAddForm);
-
-const config = {
-  inputSelector: ".popup__input-text",
-  errorClassTemplate: "popup__input-text_error",
-  activeErrorClass: "popup__input-error_active",
-  submitButtonSelector: ".popup__save-button",
-  submitButtonClass: "popup__save-button_disabled",
-};
-
-const profileFormValidator = new FormValidator(
-  config,
-  ".popup__form_type_profile"
-);
-const placeAddFormValidator = new FormValidator(
-  config,
-  ".popup__form_type_place"
-);
 
 profileFormValidator.enableValidation();
 placeAddFormValidator.enableValidation();

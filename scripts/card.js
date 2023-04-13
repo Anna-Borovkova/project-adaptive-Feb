@@ -1,4 +1,4 @@
-import { openPopup } from "./index.js";
+import { openPopup } from "./Index.js";
 
 export default class Card {
   constructor(placeData, templateSelector) {
